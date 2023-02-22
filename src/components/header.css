@@ -1,0 +1,71 @@
+.top-class {
+    margin-top : -2.2%;
+    background-color: rgb(0, 0, 0);
+}
+h1{
+    padding: 1%;
+    font-size: 3vw;
+    color: brown;
+}
+
+p {
+    text-align: left;
+    padding: 1%;
+    font-size: 1vw;
+    color: white;
+}
+header {
+    background: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+h2 {
+    color: white;
+    text-align: center;
+    align-items: center;
+    align-content: center; 
+}
+
+.carosuel {
+    margin-top: -1%;
+}
+.report1 {
+    width: 20%;
+    margin-left: 66%;
+    margin-top: -19%;
+}
+.report2 {
+    width: 20%;
+    margin-left: 66%;
+    margin-top : -15%
+}
+.third-class {
+    display: inline-flex;
+}
+.card {
+    margin-left: 2%;
+    width: 30%;
+    background-color: rgb(20, 19, 19);
+    cursor: pointer;
+}
+.video1{
+    width: 100%;
+}
+.fade-in {
+    color : white;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    animation: fadeIn 3s infinite;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+/* .fade-in-text {
+    font-family: Arial;
+    font-size: 150px;
+    animation: fadeIn 5s;
+  } */
