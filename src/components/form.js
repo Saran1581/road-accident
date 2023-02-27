@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./form.css";
-
+import axios from "axios"
 const Register = () => {
   const [time, setTime] = useState("");
   const [day, setDay] = useState("");
@@ -101,6 +101,21 @@ const Register = () => {
   const [accidentSeverityErrorMsg, setaccidentSeverityErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
+    const userData = {
+      time, day,driverAge,sex,education,driverRelation,experience,vehicleType,vehicleOwner,service,defect,
+      areaAccident,lanes,roadAlign,junction,roadSurface,roadCondition,lightCondition,weatherCondition,
+      collision,vehicleInvolved,casualites,movement,casualtyClass,sexCasualty,ageBand,casualtyServerity,
+      workCasuality,fitnessCasuality,pedestrianMovement,causeAccident
+    }
+    console.log(userData);
+  axios({
+    method:"POST",
+    url:"http://127.0.0.1:5000/predict",
+    UserData : userData,
+  }).then((res)=>{
+    console.log("res",res)
+  })
+
   const getRegister = (e) => {
     e.preventDefault();
     // if (time == "") {
@@ -178,7 +193,7 @@ const Register = () => {
      
       <div className="content">
         <form className="form">
-          <input
+          {/* <input
             type="text"
             value={time}
             onChange={(e) => {
@@ -195,8 +210,8 @@ const Register = () => {
           />
           <br />
           {timeError && <span style={{ color: "red", marginLeft: "100px" }}>{timeErrorMsg}</span>}
-          <br />
-           <input
+          <br /> */}
+           {/* <input
             type="text"
             value={day}
             onChange={(e) => {
@@ -213,7 +228,7 @@ const Register = () => {
           />
           <br />
           {dayError && <span style={{ color: "red", marginLeft: "100px" }}>{dayErrorMsg}</span>}
-          <br /> 
+          <br />  */}
           <input
             type="text"
             value={driverAge}
@@ -232,7 +247,7 @@ const Register = () => {
           <br />
           {driverAgeError && <span style={{ color: "red", marginLeft: "100px" }}>{driverAgeErrorMsg}</span>}
           <br />
-          <input
+          {/* <input
             type="text"
             value={sex}
             onChange={(e) => {
@@ -265,8 +280,8 @@ const Register = () => {
           className="input2" />
           <br />
           {educError && (<span style={{color: "red", marginLeft: "100px"}}>{educErrorMsg}</span>)}
-          <br />
-          <input
+          <br /> */}
+          {/* <input
             type="text"
             value={driverRelation}
             onChange={(e) => {
@@ -285,7 +300,7 @@ const Register = () => {
           {driverRelationError && (
             <span style={{ color: "red", marginLeft: "100px" }}>{driverRelationErrorMsg}</span>
           )}
-          <br />
+          <br /> */}
           <input
             type="text"
             value={experience}
@@ -324,7 +339,7 @@ const Register = () => {
           <br />
           {vehicleTypeError && <span style={{ color: "red", marginLeft: "100px" }}>{vehicleTypeErrorMsg}</span>}
           <br /> 
-          <input
+          {/* <input
             type="text"
             value={vehicleOwner}
             onChange={(e) => {
@@ -380,7 +395,7 @@ const Register = () => {
           />
           <br />
           {defectError && <span style={{ color: "red", marginLeft: "100px" }}>{defectErrorMsg}</span>}
-          <br /> 
+          <br />  */}
           <input
             type="text"
             value={areaAccident}
@@ -457,7 +472,7 @@ const Register = () => {
           <br />
           {junctionError && <span style={{ color: "red", marginLeft: "100px" }}>{junctionErrorMsg}</span>}
           <br /> 
-          <input
+          {/* <input
             type="text"
             value={roadSurface}
             onChange={(e) => {
@@ -475,7 +490,7 @@ const Register = () => {
           />
           <br />
           {roadSurfaceError && <span style={{ color: "red", marginLeft: "100px" }}>{roadSurfaceErrorMsg}</span>}
-          <br />
+          <br /> */}
           <input
             type="text"
             value={roadCondition}
@@ -628,7 +643,7 @@ const Register = () => {
           <br />
           {casualtyClassError && <span style={{ color: "red", marginLeft: "100px" }}>{casualtyClassErrorMsg}</span>}
           <br />
-          <input
+          {/* <input
             type="text"
             value={sexCasualty}
             onChange={(e) => {
@@ -646,7 +661,7 @@ const Register = () => {
           />
           <br />
           {sexCasualtyError && <span style={{ color: "red", marginLeft: "100px" }}>{sexCasualtyErrorMsg}</span>}
-          <br />
+          <br /> */}
           <input
             type="text"
             value={ageBand}
@@ -666,7 +681,7 @@ const Register = () => {
           <br />
           {ageBandError && <span style={{ color: "red", marginLeft: "100px" }}>{ageBandErrorMsg}</span>}
           <br />
-          <input
+          {/* <input
             type="text"
             value={casualtyServerity}
             onChange={(e) => {
@@ -684,8 +699,8 @@ const Register = () => {
           />
           <br />
           {casualtyServerityError && <span style={{ color: "red", marginLeft: "100px" }}>{casualtyServerityErrorMsg}</span>}
-          <br />
-          <input
+          <br /> */}
+          {/* <input
             type="text"
             value={workCasuality}
             onChange={(e) => {
@@ -722,7 +737,7 @@ const Register = () => {
           />
           <br />
           {fitnessCasualityError && <span style={{ color: "red", marginLeft: "100px" }}>{fitnessCasualityErrorMsg}</span>}
-          <br />
+          <br /> */}
           <input
             type="text"
             value={pedestrianMovement}
@@ -766,7 +781,7 @@ const Register = () => {
             style={{ cursor: "pointer" }}
             onClick={getRegister}
           >
-            Register
+            SUBMIT
           </button>
           <br />
           <span style={{ color: "green", fontSize: "20px" }}>{successMsg}</span>

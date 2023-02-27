@@ -3,7 +3,7 @@
     align-content: center;
     align-items: center;
     background-color: black;
-    height : 200%
+    height : 100%
 }
 .boom-card {
     background-color: black;
@@ -31,3 +31,14 @@
       transform: scale(1, 1);
     }
   }
+
+  .speedometer {
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+ .graphical-rep {
+  height: 250px;
+  width : 1000px;
+  
+ }
