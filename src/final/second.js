@@ -3,13 +3,25 @@ import './second.css';
 import {Card} from 'antd';
 import { Line } from '@ant-design/charts';
 import ReactSpeedometer from 'react-d3-speedometer';
+import axios from "axios";
+import Register from '../components/form';
 
-const Transition = () => {
-    const [boom, setBoom] = useState('');
-    var values = boom;
+const Transition = ({Vehicle_movement}) => {
+    console.log('userData',Vehicle_movement);
+    const [boom, setBoom] = useState(0);
+    const [msg, setMsg] = useState('');
+    var values = parseInt(boom);
+    // var result = Math.floor(Math.random() * 3 );
+    // console.log(result);
+    // if(result == '0') {
+    //     setMsg('fatel');
+    // } else if(result == '1') {
+    //     setMsg('heavy injury');
+    // } else if (result == '2') {
+    //     setMsg('slight injury');
+    // }
 
-
-    console.log(values);
+    console.log('values',values);
     const data = [
         { damage: 'alternate speed  ', speed: 10 },
         { damage: 'alternate speed1', speed: 40 },
@@ -19,7 +31,7 @@ const Transition = () => {
         { damage: 'alternate speed5', speed: 50 },
         { damage: 'alternate speed6', speed: 80 },
         { damage: 'alternate speed7', speed: 130 },
-        { damage: 'MY SPEED', speed: values },
+        { damage: 'MY SPEED', speed: Vehicle_movement },
       ];
     
       const config = {
@@ -32,10 +44,20 @@ const Transition = () => {
           shape : 'circle',
         },
       };
+      axios.get('localhost:5001/predict') 
+        .then((data) => {
+          const res =data.json()  
+          setMsg(res)
+          console.log(res);       
+        })
+        .catch((e) => console.log(e))
+ 
+        
 
+      
     return(
         <div className="second-center">
-            <input type='number' placeholder="enter your speed" value={boom} onChange={(e) => setBoom(e.target.value)} />
+            <input type='number' placeholder="enter your speed" value={boom} min={0} max={140} onChange={(e) => setBoom(e.target.value)} />
             <br />
         <div className="speedometer">
         <ReactSpeedometer 
@@ -63,7 +85,7 @@ const Transition = () => {
         </div>
             {/* <Card className="boom-card"> */}
             <div className="boom">
-                <h1>ALERT</h1>
+                <h1>{msg}</h1>
             </div>
             {/* </Card> */}
             {/* <Card>            */}
